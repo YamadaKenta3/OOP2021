@@ -9,16 +9,17 @@ namespace DistanceConverter
     //フィートとメートルの単位変換クラス
     public static class FeetConverter
     {
+        private const double ratio = 0.3048;
         public static double FromMeter(double meter)
         {
             //メートルからフィートを求める
-            return meter / 0.3048;
+            return meter / ratio;
         }
 
         //フィートからメートルを求める
         public static  double ToMeter(double feet)
         {
-            return feet * 0.3048;
+            return feet * ratio;
         }
     }
 }
