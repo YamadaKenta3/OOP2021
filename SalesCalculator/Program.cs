@@ -11,7 +11,7 @@ namespace SalesCalculator
     {
         static void Main(string[] args)
         {
-            
+            //List<Sale> sales = ReadSales("Sales.csv");
         }
         static List<Sale> ReadSales(string filePath)
         {
