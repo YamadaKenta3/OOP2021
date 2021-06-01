@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace DistanceConverter
+
 {
     //フィートとメートルの単位変換クラス
     public static class FeetConverter
