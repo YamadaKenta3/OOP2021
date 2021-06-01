@@ -8,6 +8,22 @@ namespace Exercise1
 {
     class Song
     {
-        
+        public string Title { get; set; }
+
+        public string ArtistName { get; set; }
+
+        public int Length { get; set; }
+
+        //コンストラクタ
+        public Song(string title, string artistname ,int length)
+        {
+            this.Title = title;
+
+            this.ArtistName = artistname;
+
+            this.Length = length;
+
+        }
+       
     }
 }
