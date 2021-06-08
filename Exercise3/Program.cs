@@ -18,7 +18,7 @@ namespace Exercise3
             var amountPerCategory = sales.GetPerCategorySales();//店舗別売り上げを求める
             foreach (var obj in amountPerCategory)
             {
-                Console.WriteLine("{0}{1:#,0}円", obj.Key, obj.Value);
+                Console.WriteLine("{0} {1:#,0}円", obj.Key, obj.Value);
             }
         }
     }
