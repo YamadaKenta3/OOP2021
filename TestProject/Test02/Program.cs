@@ -37,6 +37,13 @@ namespace Test02 {
         //　　　　出力結果【618】
         private static void Exercise01(List<int> numbers) {
 
+            var nums = numbers.Sum(s => s ) ;
+
+            List<int> list = numbers.Sum(n => n ).ToList();
+            foreach (var num in list)
+            {
+                Console.WriteLine(num);
+            }
 
 
         }
@@ -45,7 +52,13 @@ namespace Test02 {
         //　　　　出力結果【94】
         private static void Exercise02(List<int> numbers) {
 
+            var nums = numbers.Max(s => s % 2 == 0);
 
+            List<int> list = numbers.Max(n => n).ToList();
+            foreach (var num in list)
+            {
+                Console.WriteLine(num);
+            }
 
         }
         //問題３　昇順に並べて表示（遅延実行とする）
