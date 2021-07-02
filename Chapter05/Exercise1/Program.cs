@@ -13,7 +13,7 @@ namespace Exercise1
         static void Main(string[] args)
         {
 #if false
-            #region
+            #region　
             Console.WriteLine("入力してください");
             var s1 = Console.ReadLine();
             var s2 = Console.ReadLine();
