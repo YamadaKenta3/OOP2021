@@ -23,16 +23,51 @@ namespace StopWach
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            tm.Tick += Tm_Tick;
-             tm.Start();
             
-            tbTimer.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
         }
 
-        private void Tm_Tick(object sender, EventArgs e)
+      
+        //スタートボタン
+        private void stButton_Click(object sender, EventArgs e)
         {
-          //  DateTime d = DateTime;
+            tm.Start();
+            sw.Start();
+
+        }
+
+        //ラップボタン
+        private void rap_Click(object sender, EventArgs e)
+        {
+
+                LB.Items.Insert(0, label.Text);
+          
+
+          
+        }
+
+        //ストップボタン
+        private void St_Click(object sender, EventArgs e)
+        {
+            tm.Stop();
+            sw.Stop();
+           // LB.Text = sw.e.ToString(@"hh\:mm\:ss\.ff");
+
+        }
+
+        private void tm_Tick_1(object sender, EventArgs e)
+        {
+            sw.Start();
+            label.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
+
+
+        }
+        //リセットボタン
+        private void rtButton_Click(object sender, EventArgs e)
+        {
+            sw.Reset();
+
+
+            label.Text = sw.Elapsed.ToString(@"hh\:mm\:ss\.ff");
         }
     }
 
