@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarReportSystem
 {
+    [Serializable]
     public class CarReport
     {
         public DateTime Date{ get; set; }       //日付
