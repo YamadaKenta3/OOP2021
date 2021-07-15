@@ -50,7 +50,7 @@ namespace StopWach
         {
             tm.Stop();
             sw.Stop();
-           // LB.Text = sw.e.ToString(@"hh\:mm\:ss\.ff");
+         
 
         }
 

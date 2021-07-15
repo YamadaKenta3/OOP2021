@@ -45,7 +45,7 @@ namespace StopWach
             // 
             // stButton
             // 
-            this.stButton.Location = new System.Drawing.Point(36, 134);
+            this.stButton.Location = new System.Drawing.Point(0, 93);
             this.stButton.Name = "stButton";
             this.stButton.Size = new System.Drawing.Size(147, 76);
             this.stButton.TabIndex = 0;
@@ -55,7 +55,7 @@ namespace StopWach
             // 
             // rtButton
             // 
-            this.rtButton.Location = new System.Drawing.Point(211, 134);
+            this.rtButton.Location = new System.Drawing.Point(170, 93);
             this.rtButton.Name = "rtButton";
             this.rtButton.Size = new System.Drawing.Size(142, 76);
             this.rtButton.TabIndex = 1;
@@ -65,7 +65,7 @@ namespace StopWach
             // 
             // St
             // 
-            this.St.Location = new System.Drawing.Point(36, 240);
+            this.St.Location = new System.Drawing.Point(0, 175);
             this.St.Name = "St";
             this.St.Size = new System.Drawing.Size(147, 89);
             this.St.TabIndex = 2;
@@ -75,7 +75,7 @@ namespace StopWach
             // 
             // rap
             // 
-            this.rap.Location = new System.Drawing.Point(211, 240);
+            this.rap.Location = new System.Drawing.Point(170, 188);
             this.rap.Name = "rap";
             this.rap.Size = new System.Drawing.Size(142, 89);
             this.rap.TabIndex = 3;
@@ -89,7 +89,7 @@ namespace StopWach
             this.label.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.label.Font = new System.Drawing.Font("MS UI Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
             this.label.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label.Location = new System.Drawing.Point(150, 82);
+            this.label.Location = new System.Drawing.Point(141, 53);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(60, 21);
             this.label.TabIndex = 4;
@@ -99,7 +99,7 @@ namespace StopWach
             // 
             this.LB.FormattingEnabled = true;
             this.LB.ItemHeight = 12;
-            this.LB.Location = new System.Drawing.Point(428, 82);
+            this.LB.Location = new System.Drawing.Point(329, 39);
             this.LB.Name = "LB";
             this.LB.Size = new System.Drawing.Size(242, 292);
             this.LB.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace StopWach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(580, 329);
             this.Controls.Add(this.LB);
             this.Controls.Add(this.label);
             this.Controls.Add(this.rap);
