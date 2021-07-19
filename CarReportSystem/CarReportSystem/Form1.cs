@@ -204,21 +204,31 @@ namespace CarReportSystem
 
         private void fmMain_Load(object sender, EventArgs e)
         {
-
+            dgvRegistData.Columns[5].Visible = false;
         }
 
         private void btSave_Click(object sender, EventArgs e)
         {
-            if(sfdFileSave.ShowDialog() == DialogResult.OK)
+
+            if (sfdFileSave.ShowDialog() == DialogResult.OK)
             {
-               //バイナリ形式でシリアル化
+                //バイナリ形式でシリアル化
                 BinaryFormatter bf = new BinaryFormatter();
 
-                using (FileStream fs = File.Open(sfdFileSave.FileName,FileMode.Create))
+                try
                 {
-                    bf.Serialize(fs, listcarReport);
+                    using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create))
+                    {
+                        bf.Serialize(fs, listcarReport);
+                    }
                 }
-               
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+                
+                
+           
                 
             }
         }
@@ -227,21 +237,37 @@ namespace CarReportSystem
         {
             if (ofdFileOpen.ShowDialog() == DialogResult.OK)
             {
-              
+                try { 
                 //バイナリ形式で逆シリアル化
                 var bf = new BinaryFormatter();
-                using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read))
+
+                    using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read))
+                    {
+                        //逆シリアル化して読み込む
+                        listcarReport = (BindingList<CarReport>)bf.Deserialize(fs);
+                        dgvRegistData.DataSource = null;
+                        dgvRegistData.DataSource = listcarReport;
+
+
+                    }
+                }
+                catch(Exception ex)
                 {
-                    //逆シリアル化して読み込む
-                    listcarReport =  (BindingList<CarReport>) bf.Deserialize(fs);
-                    dgvRegistData.DataSource = null;
-                    dgvRegistData.DataSource = listcarReport;
-                
-                
+                    MessageBox.Show(ex.Message);
+                }
+
+
+                //よみこんだデータを各コンボボックスに登録する。
+
+                foreach (var item in listcarReport)
+                {
+                    setCbAuthor(item.Auther);
+                    setCbCarName(item.CarName);
                 }
                 
-
                 
+
+               
             }
         }
     }
