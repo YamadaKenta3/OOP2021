@@ -54,7 +54,6 @@ namespace Sample0823
             this.label1.Size = new System.Drawing.Size(50, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "の";
-
             // 
             // label2
             // 
@@ -65,7 +64,6 @@ namespace Sample0823
             this.label2.Size = new System.Drawing.Size(57, 40);
             this.label2.TabIndex = 1;
             this.label2.Text = "乗";
-
             // 
             // Jyou
             // 
@@ -74,6 +72,7 @@ namespace Sample0823
             this.Jyou.Name = "Jyou";
             this.Jyou.Size = new System.Drawing.Size(154, 47);
             this.Jyou.TabIndex = 2;
+            this.Jyou.TextChanged += new System.EventHandler(this.Jyou_TextChanged);
             // 
             // Exec
             // 

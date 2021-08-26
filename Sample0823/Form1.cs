@@ -25,7 +25,7 @@ namespace Sample0823
             var n = int.Parse(Value.Text);
             var m = int.Parse(Jyou.Text);
 
-            var result = n;
+            /*var result = n;
             
             for(int i = 1;i < m; i++)
             {
@@ -33,7 +33,13 @@ namespace Sample0823
 
             }
             Result.Text = result.ToString();
-            
+            */
+            Result.Text = Math.Pow(n, m).ToString();
+        }
+
+        private void Jyou_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
