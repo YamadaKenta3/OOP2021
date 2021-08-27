@@ -13,21 +13,22 @@ namespace Section01
         {
 
             var xdoc = XDocument.Load("novelists.xml");
-           // var xelements = xdoc.Root.Elements()
-              //                          .Where(x =>((DateTime)x.Element("birth")).Year >= 1900);
-            //var xelements = xdoc.Root.Elements()
-              //                          .OrderByDescending(x => (string)(x.Element("name").Attribute("kana")));
-            
-            foreach (var xnovelist in xdoc.Root.Elements())
+            var xnovelists = xdoc.Root.Elements()
+                                    .Select(x => new
+                                    {
+                                        Name = (string)x.Element("name"),
+                                        Birth = (DateTime)x.Element("birth"),
+                                        Death = (DateTime)x.Element("death")
+                                    });
+
+
+            foreach (var novelist in xnovelists )
             {
 
-                var xname = xnovelist.Element("name");
-                // var xkana = xname.Attribute("kana");
-                //var xbirth = (DateTime)xnovelist.Element("birth");
-                var works = xnovelist.Element("masterpieces")
-                                            .Elements("title")
-                                            .Select(x => x.Value);
-                Console.WriteLine("{0} - {1}" ,xname.Value,string.Join(",",works));
+               
+                Console.WriteLine("{0} ({1} - {2})",novelist.Name,
+                                                    novelist.Birth.Year,
+                                                    novelist.Death.Year);
             }
         }
     }
