@@ -36,7 +36,7 @@ namespace Execise1
         {
             var xdoc = XDocument.Load(file);
             var competition = xdoc.Root.Elements()
-                                        .OrderBy(x =>((int)x.Element("firstplayed")));
+                                        .OrderByDescending(x =>((int)x.Element("firstplayed")));
             foreach (var sport in competition)
             {
                 var xname = sport.Element("name");
