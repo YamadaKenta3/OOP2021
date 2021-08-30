@@ -11,6 +11,14 @@ namespace Section2
     {
         static void Main(string[] args)
         {
+         
+            var xdoc  = XDocument.Load("novelists.xml");
+            var elements = xdoc.Root.Elements()
+                         .Where(x => x.Element("name").Value == "菊池　寛");
+            elements.Remove();
+            xdoc.Save("novelists.xml");
+            
+            /*
             string elmstring =
     @"<novelist>
       <name kana=""きくち かん"">菊池 寛</name>
@@ -28,6 +36,9 @@ namespace Section2
             xdoc.Root.Add(element);
 
             xdoc.Save("novelists.xml");// Xmlファイルに保存
+        */
+        
         }
+
     }
 }

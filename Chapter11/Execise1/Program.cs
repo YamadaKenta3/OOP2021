@@ -18,6 +18,27 @@ namespace Execise1
             Console.WriteLine("-------------");
             Exercise1_3(file);
             Console.WriteLine("-------------");
+            Exercise1_4(file);
+            Console.WriteLine("-------------");
+
+
+        }
+
+        private static void Exercise1_4(string file)
+        {
+
+
+            var newfail = "sports.xml";
+            var xdoc = XDocument.Load(file);
+            var element = new XElement("ballsports",
+                new XElement("name", "サッカー",
+                new XAttribute("kanji", "蹴球")),
+                new XElement("teammembers", "11"),
+                 new XElement("firstplayed", "1863")
+                 );
+            xdoc.Root.Add(element);
+            xdoc.Save(newfail);
+
         }
 
         private static void Exercise1_1(string file)
