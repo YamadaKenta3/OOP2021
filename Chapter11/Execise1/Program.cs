@@ -53,7 +53,21 @@ namespace Execise1
 
         private static void Exercise1_3(string file)
         {
+            var xdoc = XDocument.Load(file);
+
+            var maxmember = xdoc.Root.Elements()
+                                     .Select(x => new
+                                     {
+                                         Name = x.Element("name").Value,
+                                         Teammembers = x.Element("teammembers").Value
+
+                                     })
+                                        .OrderByDescending(x => int.Parse(x.Teammembers))
+                                        .First();
+            Console.WriteLine("{0}",maxmember.Name);
+
             
         }
+        
     }
 }
