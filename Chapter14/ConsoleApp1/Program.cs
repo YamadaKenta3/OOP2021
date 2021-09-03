@@ -26,16 +26,20 @@ namespace Section04
             //DownloadFileAsync();
             // OpenReadSample();
 
-          
-         
 
-            Console.WriteLine("1:前橋","2:みなかみ","3:宇都宮","4:水戸","9:その他");
+
+            Console.WriteLine("yahoo! 週間天気予報");
+            Console.WriteLine("");
+            Console.WriteLine("地域コードを入力");
+            Console.WriteLine("1:前橋");
             Console.WriteLine("2:みなかみ");
             Console.WriteLine("3:宇都宮");
             Console.WriteLine("4:水戸");
-            Console.WriteLine("9:その他");
-            Console.WriteLine("地域コードを入力");
-            Console.WriteLine(">");
+            Console.WriteLine("9:その他(直接入力");
+            Console.WriteLine("");
+
+            
+            Console.Write(">");
             int num = int.Parse(Console.ReadLine());
 
             switch (num)
