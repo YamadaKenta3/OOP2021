@@ -21,5 +21,16 @@ namespace WeatherApp
         {
 
         }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
+            switch (num)
+            {
+                default:
+                    break;
+            }
+        }
     }
 }
