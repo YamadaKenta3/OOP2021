@@ -30,6 +30,7 @@ namespace RssReader
         }
 
         List<string> link = new List<string>();
+        List<string> description = new List<string>();
 
         private void setRssTitle(string uri)
         {
@@ -45,6 +46,8 @@ namespace RssReader
                 {
                     lbTitles.Items.Add(node.Element("title").Value );
                     link.Add(node.Element("link").Value);
+                    description.Add(node.Element("description").Value);
+                    
                                        
                 }
    
@@ -56,10 +59,11 @@ namespace RssReader
             var num = lbTitles.SelectedIndex;
 
             wbBrowser.Url = new Uri(link[num]);
+            lbdescription.Text = (description[num]);
 
         }
 
-        
+       
     }
 }
 
