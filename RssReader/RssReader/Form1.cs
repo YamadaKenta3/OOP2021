@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
+
 namespace RssReader
 {
     public partial class Form1 : Form
@@ -58,12 +59,30 @@ namespace RssReader
         {
             var num = lbTitles.SelectedIndex;
 
-            wbBrowser.Url = new Uri(link[num]);
             lbdescription.Text = (description[num]);
 
         }
 
-       
+        private void btForm2_Click(object sender, EventArgs e)
+        {
+            var num = lbTitles.SelectedIndex;
+
+            Form2 form2 = new Form2();
+            form2.Show();
+
+            form2.wbBrowser.Url = new Uri(link[num]);
+
+
+
+           
+            
+            
+
+            
+            
+
+
+        }
     }
 }
 
