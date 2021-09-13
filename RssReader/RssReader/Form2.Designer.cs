@@ -34,12 +34,12 @@ namespace RssReader
             // 
             // wbBrowser
             // 
-            this.wbBrowser.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.wbBrowser.Location = new System.Drawing.Point(0, 0);
+            this.wbBrowser.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.wbBrowser.Location = new System.Drawing.Point(0, 16);
             this.wbBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.wbBrowser.Name = "wbBrowser";
             this.wbBrowser.ScriptErrorsSuppressed = true;
-            this.wbBrowser.Size = new System.Drawing.Size(800, 450);
+            this.wbBrowser.Size = new System.Drawing.Size(20, 577);
             this.wbBrowser.TabIndex = 0;
             this.wbBrowser.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.wbBrowser_DocumentCompleted);
             // 
@@ -47,7 +47,8 @@ namespace RssReader
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.ClientSize = new System.Drawing.Size(945, 608);
             this.Controls.Add(this.wbBrowser);
             this.Name = "Form2";
             this.Text = "Form2";

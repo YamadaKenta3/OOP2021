@@ -29,9 +29,10 @@ namespace RssReader
 
 
         }
-
+       
         List<string> link = new List<string>();
         List<string> description = new List<string>();
+        List<string> pubdate = new List<string>();
 
         private void setRssTitle(string uri)
         {
@@ -48,7 +49,7 @@ namespace RssReader
                     lbTitles.Items.Add(node.Element("title").Value );
                     link.Add(node.Element("link").Value);
                     description.Add(node.Element("description").Value);
-                    
+                    pubdate.Add(node.Element("pubDate").Value);
                                        
                 }
    
@@ -60,6 +61,7 @@ namespace RssReader
             var num = lbTitles.SelectedIndex;
 
             lbdescription.Text = (description[num]);
+            lbPubDate.Text = (pubdate[num]);
 
         }
 
@@ -68,22 +70,17 @@ namespace RssReader
             var num = lbTitles.SelectedIndex;
 
             Form2 form2 = new Form2();
+       
             form2.Show();
 
             form2.wbBrowser.Url = new Uri(link[num]);
 
 
-
-           
-            
-            
-
-            
-            
-
-
         }
+
+       
     }
+       
 }
 
 

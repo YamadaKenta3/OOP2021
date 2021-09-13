@@ -35,6 +35,11 @@ namespace RssReader
             this.btRead = new System.Windows.Forms.Button();
             this.lbdescription = new System.Windows.Forms.Label();
             this.btForm2 = new System.Windows.Forms.Button();
+            this.lbPubDate = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btBack = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -59,9 +64,9 @@ namespace RssReader
             // 
             this.lbTitles.FormattingEnabled = true;
             this.lbTitles.ItemHeight = 15;
-            this.lbTitles.Location = new System.Drawing.Point(3, 128);
+            this.lbTitles.Location = new System.Drawing.Point(-3, 148);
             this.lbTitles.Name = "lbTitles";
-            this.lbTitles.Size = new System.Drawing.Size(533, 424);
+            this.lbTitles.Size = new System.Drawing.Size(333, 469);
             this.lbTitles.TabIndex = 2;
             this.lbTitles.Click += new System.EventHandler(this.lbTitles_Click);
             // 
@@ -79,7 +84,7 @@ namespace RssReader
             // 
             this.lbdescription.AutoSize = true;
             this.lbdescription.Font = new System.Drawing.Font("MS UI Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbdescription.Location = new System.Drawing.Point(645, 152);
+            this.lbdescription.Location = new System.Drawing.Point(448, 309);
             this.lbdescription.Name = "lbdescription";
             this.lbdescription.Size = new System.Drawing.Size(84, 30);
             this.lbdescription.TabIndex = 5;
@@ -87,7 +92,7 @@ namespace RssReader
             // 
             // btForm2
             // 
-            this.btForm2.Location = new System.Drawing.Point(620, 355);
+            this.btForm2.Location = new System.Drawing.Point(578, 439);
             this.btForm2.Name = "btForm2";
             this.btForm2.Size = new System.Drawing.Size(143, 97);
             this.btForm2.TabIndex = 6;
@@ -95,11 +100,63 @@ namespace RssReader
             this.btForm2.UseVisualStyleBackColor = true;
             this.btForm2.Click += new System.EventHandler(this.btForm2_Click);
             // 
+            // lbPubDate
+            // 
+            this.lbPubDate.AutoSize = true;
+            this.lbPubDate.Font = new System.Drawing.Font("MS UI Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbPubDate.Location = new System.Drawing.Point(448, 186);
+            this.lbPubDate.Name = "lbPubDate";
+            this.lbPubDate.Size = new System.Drawing.Size(79, 28);
+            this.lbPubDate.TabIndex = 7;
+            this.lbPubDate.Text = "label3";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(372, 299);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "label2";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(372, 167);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "更新日時";
+            // 
+            // btBack
+            // 
+            this.btBack.Location = new System.Drawing.Point(50, 83);
+            this.btBack.Name = "btBack";
+            this.btBack.Size = new System.Drawing.Size(85, 44);
+            this.btBack.TabIndex = 10;
+            this.btBack.Text = "戻る";
+            this.btBack.UseVisualStyleBackColor = true;
+     
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(176, 83);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(99, 39);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "進む";
+            this.button2.UseVisualStyleBackColor = true;
+       
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 629);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btBack);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbPubDate);
             this.Controls.Add(this.btForm2);
             this.Controls.Add(this.lbdescription);
             this.Controls.Add(this.btRead);
@@ -121,6 +178,11 @@ namespace RssReader
         private System.Windows.Forms.Button btForm2;
         public System.Windows.Forms.TextBox tbUrl;
         public System.Windows.Forms.ListBox lbTitles;
+        private System.Windows.Forms.Label lbPubDate;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btBack;
+        private System.Windows.Forms.Button button2;
     }
 }
 
