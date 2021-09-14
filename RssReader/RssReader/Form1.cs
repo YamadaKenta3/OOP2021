@@ -29,7 +29,9 @@ namespace RssReader
 
 
         }
-       
+
+        Form2 form2 = new Form2();
+
         List<string> link = new List<string>();
         List<string> description = new List<string>();
         List<string> pubdate = new List<string>();
@@ -69,8 +71,6 @@ namespace RssReader
         {
             var num = lbTitles.SelectedIndex;
 
-            Form2 form2 = new Form2();
-       
             form2.Show();
 
             form2.wbBrowser.Url = new Uri(link[num]);
@@ -78,7 +78,7 @@ namespace RssReader
 
         }
 
-       
+
     }
        
 }

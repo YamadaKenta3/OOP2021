@@ -38,8 +38,6 @@ namespace RssReader
             this.lbPubDate = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btBack = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -115,9 +113,9 @@ namespace RssReader
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(372, 299);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 15);
+            this.label2.Size = new System.Drawing.Size(76, 15);
             this.label2.TabIndex = 8;
-            this.label2.Text = "label2";
+            this.label2.Text = "description";
             // 
             // label3
             // 
@@ -128,32 +126,11 @@ namespace RssReader
             this.label3.TabIndex = 9;
             this.label3.Text = "更新日時";
             // 
-            // btBack
-            // 
-            this.btBack.Location = new System.Drawing.Point(50, 83);
-            this.btBack.Name = "btBack";
-            this.btBack.Size = new System.Drawing.Size(85, 44);
-            this.btBack.TabIndex = 10;
-            this.btBack.Text = "戻る";
-            this.btBack.UseVisualStyleBackColor = true;
-     
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(176, 83);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(99, 39);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "進む";
-            this.button2.UseVisualStyleBackColor = true;
-       
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(868, 629);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.btBack);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lbPubDate);
@@ -181,8 +158,6 @@ namespace RssReader
         private System.Windows.Forms.Label lbPubDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button btBack;
-        private System.Windows.Forms.Button button2;
     }
 }
 

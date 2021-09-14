@@ -32,6 +32,13 @@ namespace RssReader
         private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
          
+
+
+        }
+
+        private void btDingm_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
