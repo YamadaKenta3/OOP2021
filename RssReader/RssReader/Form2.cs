@@ -17,7 +17,7 @@ namespace RssReader
 
         public Form2()
         {
-            
+           
 
             InitializeComponent();
         }
@@ -25,20 +25,26 @@ namespace RssReader
         private void Form2_Load(object sender, EventArgs e)
         {
 
-          
+            
 
         }
 
         private void wbBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-         
+            btBack.Enabled = webBrowser1.CanGoBack;
 
+            btDingm.Enabled = webBrowser1.CanGoForward;
 
         }
 
         private void btDingm_Click(object sender, EventArgs e)
         {
-            
+            webBrowser1.GoForward();
+        }
+
+        private void btBack_Click(object sender, EventArgs e)
+        {
+            webBrowser1.GoBack();
         }
     }
 }

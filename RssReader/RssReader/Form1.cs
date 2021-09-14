@@ -73,12 +73,15 @@ namespace RssReader
 
             form2.Show();
 
-            form2.wbBrowser.Url = new Uri(link[num]);
+            form2.webBrowser1.Url = new Uri(link[num]);
 
 
         }
 
+        private void tbUrl_TextChanged(object sender, EventArgs e)
+        {
 
+        }
     }
        
 }
