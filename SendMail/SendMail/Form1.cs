@@ -38,8 +38,17 @@ namespace SendMail
                 mailMessage.From = new MailAddress(setting.MailAddr);
                 //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
-                mailMessage.CC.Add(tbCc.Text);
-                mailMessage.Bcc.Add(tbBcc.Text);
+
+                if (tbCc.Text != "")
+                {
+                    mailMessage.CC.Add(tbCc.Text);
+                }
+                if (tbBcc.Text != "")
+                {
+                    mailMessage.Bcc.Add(tbBcc.Text);
+                }
+                
+               
                 //件名（タイトル）
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -55,14 +64,16 @@ namespace SendMail
 
 
                 smtpClient.Credentials
-                    = new NetworkCredential("ojsinfosys01@gmail.com", "Infosys2021");
-                smtpClient.Host = "smtp.gmail.com";
-                smtpClient.Port = 587;
-                smtpClient.EnableSsl = true;
-                smtpClient.Send(mailMessage);
+                    = new NetworkCredential(settings.MailAddr,settings.Pass);
+                smtpClient.Host = setting.Host;
+                smtpClient.Port = settings.Port;
+                smtpClient.EnableSsl = settings.Ssl;
+                //smtpClient.Send(mailMessage);
 
-
-                MessageBox.Show("送信完了");
+                smtpClient.SendCompleted += SmtpClient_SendCompleted;
+                string userState = "SendMail";
+                smtpClient.SendAsync(mailMessage, userState);
+                
 
 
 
@@ -71,6 +82,19 @@ namespace SendMail
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
+        {
+            if (e.Error != null)
+            {
+                MessageBox.Show(e.Error.Message);
+            }
+            else
+            {
+                MessageBox.Show("送信完了");
+            }
+
         }
 
         private void btChange_Click(object sender, EventArgs e)

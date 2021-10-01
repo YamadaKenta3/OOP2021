@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail
 {
@@ -15,6 +16,10 @@ namespace SendMail
     {
          
         private Settings settings =  Settings.getInstance();
+
+        XmlDocument doc = new XmlDocument();
+
+
 
         public ConfigForm()
         {
@@ -40,6 +45,7 @@ namespace SendMail
         private void btApply_Click(object sender, EventArgs e)
         {
             Apply();
+     
         }
 
 
@@ -86,6 +92,9 @@ namespace SendMail
 
         }
 
+        
+        
+    
 
 
 
