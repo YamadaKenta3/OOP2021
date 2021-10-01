@@ -12,8 +12,13 @@ using System.Windows.Forms;
 
 namespace SendMail
 {
+
     public partial class Form1 : Form
     {
+
+        private ConfigForm configForm = new ConfigForm();
+        private Settings settings = Settings.getInstance();
+
         public Form1()
         {
             InitializeComponent();
@@ -25,10 +30,17 @@ namespace SendMail
             {
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
+                
                 //差出人アドレス
-                mailMessage.From = new MailAddress("ojsinfosys01@gmail.com");
+                mailMessage.From = new MailAddress(settings.MailAddr);
+             
                 //宛先(To)
                 mailMessage.To.Add(tbTo.Text);
+                mailMessage.To.Add(tbTo.Text);
+
+                mailMessage.CC.Add(tbCc.Text);
+
+                mailMessage.Bcc.Add(tbBcc.Text);
                 //件名(タイトル)
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -54,6 +66,16 @@ namespace SendMail
 
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void tbTo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btConfig_Click(object sender, EventArgs e)
+        {
+            new ConfigForm().ShowDialog();
         }
 
         private void tbTo_TextChanged(object sender, EventArgs e) {
