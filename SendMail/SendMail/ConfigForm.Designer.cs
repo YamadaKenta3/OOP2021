@@ -130,9 +130,9 @@ namespace SendMail
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 110);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.Size = new System.Drawing.Size(51, 12);
             this.label2.TabIndex = 0;
-            this.label2.Text = "送信サーバ :";
+            this.label2.Text = "ユーザー :";
             // 
             // label1
             // 
@@ -234,7 +234,6 @@ namespace SendMail
             this.Controls.Add(this.groupBox1);
             this.Name = "ConfigForm";
             this.Text = "ConfigForm";
-            this.Load += new System.EventHandler(this.ConfigForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

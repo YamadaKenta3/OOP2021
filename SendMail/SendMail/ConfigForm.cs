@@ -10,64 +10,85 @@ using System.Windows.Forms;
 
 namespace SendMail
 {
+
     public partial class ConfigForm : Form
     {
-         Form1 f1;
-        private  Settings settings =  Settings.getInstance();
+         
+        private Settings settings =  Settings.getInstance();
 
         public ConfigForm()
         {
             InitializeComponent();
         }
+        
+        
+        public Settings setting = Settings.getInstance();
 
-        private void btDefault_Click(object sender, EventArgs e)
-        {
-           
-
-            tbHost.Text = settings.sHost();
-            tbUserName.Text = settings.sMailAddr();
-            tbPort.Text = settings.sPost();
-            tbPass.Text = settings.sPass();
-            cbSsl.Checked = settings.bSsl();
-           
-
-            
+      
 
 
-        }
-        private void ConfigForm_Load(object sender, EventArgs e)
-        {
-            f1 = new Form1();
-        }
+
         private void btOk_Click(object sender, EventArgs e)
         {
-
-
-            SettingsRegist();
-           // f1.tbTo.Text = tbUserName.Text;
-            //f1.ShowDialog();
+            Apply();
             this.Close();
+
         }
 
-        private void SettingsRegist()
-        {
-            Settings.Host = tbHost.Text;
-            Settings.Port = int.Parse(tbPort.Text);
-            Settings.MailAddr = tbUserName.Text;
-            Settings.Pass = tbPass.Text;
-            Settings.Ssl = cbSsl.Checked;
-        }
+
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            SettingsRegist();
+            Apply();
+        }
 
+
+
+        private Settings Setreturn()
+        {
+            return setting;
+        }
+
+
+
+        public void Apply()
+        {
+
+            setting.Host = tbHost.Text;
+            setting.Pass = tbPass.Text;
+            setting.Port = int.Parse(tbPort.Text);
+            setting.MailAddr = tbUserName.Text;
+            setting.Ssl = cbSsl.Checked;
 
         }
+
+
 
         private void btCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
+
+
+        private void btDefault_Click(object sender, EventArgs e)
+        {
+
+           
+            tbHost.Text = setting.sHost();
+            tbUserName.Text = setting.sMailAddr();
+            tbPort.Text = setting.sPort();
+            tbPass.Text = setting.sPass();
+            cbSsl.Checked = setting.sSsl();
+            tbSender.Text = setting.sMailAddr();
+
+
+
+        }
+
+
+
+
+
     }
 }

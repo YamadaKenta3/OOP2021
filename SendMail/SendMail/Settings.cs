@@ -8,52 +8,56 @@ namespace SendMail
 {
    public class Settings
     {
-        private static Settings instance = null;
-        
-        public int Port { get; set; } // ポート番号
-        public string Host { get; set; }//ホスト名
-        public string MailAddr{ get; set; } //メールアドレス
-    　　public string Pass { get; set; }　//パスワード
-        public bool Ssl { get; set; }// SSL
 
-        
+
+        private static readonly Settings instance = new Settings();
+
+
+
+        public int Port { get; set; }   //ポート番号
+        public string Host { get; set; }    //ホスト名
+        public string MailAddr { get; set; }    //メールアドレス
+        public string Pass { get; set; }    //パスワード
+        public bool Ssl { get; set; }   //SSL
+
+
+
         //コンストラクタ
         private Settings() {}
+        
 
         //インスタンスの取得
         public static Settings getInstance()
         {
-            if(instance == null)
-            {
-                instance = new Settings();
-            }
-
-            return instance;
+            return Settings.instance;
         }
-        
+
+
 
         public string sHost()
         {
             return "smtp.gmail.com";
         }
-        public string sPost()
+        public string sPort()
         {
             return 587.ToString();
         }
         public string sMailAddr()
         {
-            return "ojsinfosys01@ojs.ac.jp";
+            return "infosys01@gmail.com";
         }
         public string sPass()
         {
-            return "Infosys2019";
-
+            return "Infosys2021";
         }
-        public bool bSsl()
+        public bool sSsl()
         {
             return true;
         }
 
-      
+
+
+
+
     }
 }
