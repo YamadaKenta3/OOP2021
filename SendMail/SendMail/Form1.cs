@@ -55,5 +55,9 @@ namespace SendMail
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void tbTo_TextChanged(object sender, EventArgs e) {
+
+        }
     }
 }
