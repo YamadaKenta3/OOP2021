@@ -68,6 +68,11 @@ namespace SendMail
             }
         }
 
+
+        private void tbTo_TextChanged(object sender, EventArgs e) {
+
+        }
+
         private void tbTo_TextChanged(object sender, EventArgs e)
         {
 
@@ -78,8 +83,5 @@ namespace SendMail
             new ConfigForm().ShowDialog();
         }
 
-        private void tbTo_TextChanged(object sender, EventArgs e) {
-
-        }
     }
 }
