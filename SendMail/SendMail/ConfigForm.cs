@@ -30,14 +30,6 @@ namespace SendMail
         }
         
         
-        public Settings setting = Settings.getInstance();
-
-      
-
-
-
-
-
         private void btOk_Click(object sender, EventArgs e)
         {
             Apply();
@@ -57,7 +49,7 @@ namespace SendMail
 
         private Settings Setreturn()
         {
-            return setting;
+            return settings;
         }
 
 
@@ -65,25 +57,7 @@ namespace SendMail
         public void Apply()
         {
 
-            setting.Host = tbHost.Text;
-            setting.Pass = tbPass.Text;
-            setting.Port = int.Parse(tbPort.Text);
-            setting.MailAddr = tbUserName.Text;
-            setting.Ssl = cbSsl.Checked;
-
-
-            var xws = new XmlWriterSettings
-            {
-                Encoding = new System.Text.UTF8Encoding(false),
-                Indent = true,
-                IndentChars = "   ",
-
-            };
-            using(var writer = XmlWriter.Create("mailsetting.xml", xws))
-            {
-                var serializer = new DataContractSerializer(settings.GetType());
-                serializer.WriteObject(writer, xws);
-            }
+           
             this.Close();
         }
 
@@ -101,12 +75,12 @@ namespace SendMail
         {
 
            
-            tbHost.Text = setting.sHost();
-            tbUserName.Text = setting.sMailAddr();
-            tbPort.Text = setting.sPort();
-            tbPass.Text = setting.sPass();
-            cbSsl.Checked = setting.sSsl();
-            tbSender.Text = setting.sMailAddr();
+            tbHost.Text = settings.sHost();
+            tbUserName.Text = settings.sMailAddr();
+            tbPort.Text = settings.sPort();
+            tbPass.Text = settings.sPass();
+            cbSsl.Checked = settings.sSsl();
+            tbSender.Text = settings.sMailAddr();
 
 
 

@@ -26,10 +26,6 @@ namespace SendMail
             InitializeComponent();
         }
 
-        private Settings setting = Settings.getInstance();
-
-
-
         private void btSend_Click(object sender, EventArgs e)
         {
             try
@@ -37,7 +33,7 @@ namespace SendMail
                 //メール送信のためのインスタンスを生成
                 MailMessage mailMessage = new MailMessage();
                 //差出人アドレス
-                mailMessage.From = new MailAddress(setting.MailAddr);
+                mailMessage.From = new MailAddress(settings.MailAddr);
                 //宛先（To）
                 mailMessage.To.Add(tbTo.Text);
 
@@ -67,7 +63,7 @@ namespace SendMail
 
                 smtpClient.Credentials
                     = new NetworkCredential(settings.MailAddr,settings.Pass);
-                smtpClient.Host = setting.Host;
+                smtpClient.Host = settings.Host;
                 smtpClient.Port = settings.Port;
                 smtpClient.EnableSsl = settings.Ssl;
                 //smtpClient.Send(mailMessage);
@@ -105,20 +101,18 @@ namespace SendMail
             configForm.Show();
         }
 
+
+
+
         //逆シリアル化 P303
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            using (var reader = XmlReader.Create("mailsetting.xml"))
-            {
-                var serializer = new DataContractSerializer(typeof(Settings));
-                var readSettings = serializer.ReadObject(reader) as Settings;
+           
 
-                settings.Host = readSettings.Host;
-                settings.Port = readSettings.Port;
-                settings.Pass = readSettings.Pass;
-                settings.MailAddr = readSettings.MailAddr;
-                settings.Ssl = readSettings.Ssl;
-            }
+                    
+               
         }
     }
 }
