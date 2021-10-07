@@ -6,9 +6,11 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace SendMail
 {
@@ -101,6 +103,22 @@ namespace SendMail
         {
             ConfigForm configForm = new ConfigForm();
             configForm.Show();
+        }
+
+        //逆シリアル化 P303
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            using (var reader = XmlReader.Create("mailsetting.xml"))
+            {
+                var serializer = new DataContractSerializer(typeof(Settings));
+                var readSettings = serializer.ReadObject(reader) as Settings;
+
+                settings.Host = readSettings.Host;
+                settings.Port = readSettings.Port;
+                settings.Pass = readSettings.Pass;
+                settings.MailAddr = readSettings.MailAddr;
+                settings.Ssl = readSettings.Ssl;
+            }
         }
     }
 }

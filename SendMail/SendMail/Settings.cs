@@ -32,6 +32,7 @@ namespace SendMail
         public static Settings getInstance()
         {
             return Settings.instance;
+
         }
 
 

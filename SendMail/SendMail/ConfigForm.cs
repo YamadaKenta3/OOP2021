@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,12 +25,16 @@ namespace SendMail
         public ConfigForm()
         {
             InitializeComponent();
+        
+        
         }
         
         
         public Settings setting = Settings.getInstance();
 
       
+
+
 
 
 
@@ -66,9 +71,24 @@ namespace SendMail
             setting.MailAddr = tbUserName.Text;
             setting.Ssl = cbSsl.Checked;
 
+
+            var xws = new XmlWriterSettings
+            {
+                Encoding = new System.Text.UTF8Encoding(false),
+                Indent = true,
+                IndentChars = "   ",
+
+            };
+            using(var writer = XmlWriter.Create("mailsetting.xml", xws))
+            {
+                var serializer = new DataContractSerializer(settings.GetType());
+                serializer.WriteObject(writer, xws);
+            }
+            this.Close();
         }
 
 
+       
 
         private void btCancel_Click(object sender, EventArgs e)
         {
@@ -92,12 +112,14 @@ namespace SendMail
 
         }
 
-        
-        
-    
-
-
-
-
+        //設定画面をロードすると一度だけ実行されるイベントハンドラ
+        private void ConfigForm_Load(object sender, EventArgs e)
+        {
+            tbHost.Text = settings.Host;
+            tbHost.Text = settings.Port.ToString();
+            tbUserName.Text = settings.Pass;
+            cbSsl.Checked = settings.Ssl;
+            tbSender.Text = settings.MailAddr;
+        }
     }
 }
