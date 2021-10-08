@@ -32,7 +32,8 @@ namespace SendMail
         
         private void btOk_Click(object sender, EventArgs e)
         {
-            Apply();
+
+            btApply_Click(sender, e);//適用ボタンの処理を呼び出し
             this.Close();
 
         }
@@ -41,8 +42,11 @@ namespace SendMail
 
         private void btApply_Click(object sender, EventArgs e)
         {
-            Apply();
-     
+            //  Apply();
+            //セッティングイブジェクトに入力データを渡して登録を行う
+            settings.setSendConfig(tbHost.Text, int.Parse(tbPort.Text),
+                                          tbUserName.Text, tbPass.Text, cbSsl.Checked);
+
         }
 
 
@@ -51,18 +55,6 @@ namespace SendMail
         {
             return settings;
         }
-
-
-
-        public void Apply()
-        {
-
-           
-            this.Close();
-        }
-
-
-       
 
         private void btCancel_Click(object sender, EventArgs e)
         {
@@ -90,8 +82,9 @@ namespace SendMail
         private void ConfigForm_Load(object sender, EventArgs e)
         {
             tbHost.Text = settings.Host;
-            tbHost.Text = settings.Port.ToString();
-            tbUserName.Text = settings.Pass;
+            tbPort.Text = settings.Port.ToString();
+            tbPass.Text = settings.Pass;
+            tbUserName.Text = settings.MailAddr;
             cbSsl.Checked = settings.Ssl;
             tbSender.Text = settings.MailAddr;
         }

@@ -45,8 +45,15 @@ namespace SendMail
                 {
                     mailMessage.Bcc.Add(tbBcc.Text);
                 }
-                
+
+
+              //  if (String.IsNullOrEmpty(tbBcc.Text, tbCc.Text))
+              //  {
+                    MessageBox.Show ("未入力");
+             //   }
                
+
+
                 //件名（タイトル）
                 mailMessage.Subject = tbTitle.Text;
                 //本文
@@ -78,6 +85,7 @@ namespace SendMail
             }
             catch (Exception ex)
             {
+               
                 MessageBox.Show(ex.Message);
             }
         }
@@ -97,8 +105,8 @@ namespace SendMail
 
         private void btChange_Click(object sender, EventArgs e)
         {
-            ConfigForm configForm = new ConfigForm();
-            configForm.Show();
+           // ConfigForm configForm = new ConfigForm();
+            configForm.ShowDialog();
         }
 
 
@@ -109,10 +117,28 @@ namespace SendMail
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
-
-                    
+            //起動時に送信情報が未設定の場合設定画面を表示する
+            if (!Settings.Set)
+            {
+                configForm.ShowDialog();
+            }
                
+        }
+
+        private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void 新規作成NToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            tbTo.Clear();
+            tbBcc.Clear();
+            tbCc.Clear();
+            tbMessage.Clear();
+            tbTitle.Clear();
+            
+
         }
     }
 }

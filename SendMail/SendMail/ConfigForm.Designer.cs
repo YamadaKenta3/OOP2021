@@ -83,6 +83,7 @@ namespace SendMail
             // 
             this.tbPass.Location = new System.Drawing.Point(327, 110);
             this.tbPass.Name = "tbPass";
+            this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(160, 19);
             this.tbPass.TabIndex = 1;
             // 
