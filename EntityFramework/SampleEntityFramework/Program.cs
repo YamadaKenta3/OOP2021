@@ -195,7 +195,7 @@ namespace SampleEntityFramework
 
             }
 
-            }
+        }
 
         private static void Exercise13_1_5()
         {
@@ -216,7 +216,7 @@ namespace SampleEntityFramework
             
             }
 
-            }
+        }
 
 
         private static void issue()
@@ -382,7 +382,7 @@ namespace SampleEntityFramework
 
                
             }
-            }
+        }
         
         // List 13-10
         private static void AddBooks()

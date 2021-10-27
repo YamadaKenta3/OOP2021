@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace CarReportSystem
+namespace AddressBook
 {
     static class Program
     {
@@ -16,10 +16,7 @@ namespace CarReportSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new fmMain());
-
+            Application.Run(new Form1());
         }
-
     }
-
 }
