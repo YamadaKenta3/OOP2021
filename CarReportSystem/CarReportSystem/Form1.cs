@@ -205,8 +205,16 @@ namespace CarReportSystem
         private void fmMain_Load(object sender, EventArgs e)
         {
             // TODO: このコード行はデータを 'infosys202121DataSet.CarReport' テーブルに読み込みます。必要に応じて移動、または削除をしてください。
-          
-          //  dgvRegistData.Columns[5].Visible = false;
+
+            //  dgvRegistData.Columns[5].Visible = false;
+
+
+
+            carReportDataGridView.Columns[0].Visible = false;
+            carReportDataGridView.Columns[1].HeaderText = "日付";
+
+
+
         }
 
         private void btUpdate_Click(object sender, EventArgs e)
@@ -254,6 +262,7 @@ namespace CarReportSystem
         private void btConnect_Click(object sender, EventArgs e)
         {
             this.carReportTableAdapter.Fill(this.infosys202121DataSet.CarReport);
+
 #if false
 
             if (ofdFileOpen.ShowDialog() == DialogResult.OK)
@@ -320,6 +329,7 @@ namespace CarReportSystem
             catch (Exception)
             { 
                 pbPicture.Image = null;
+
             }
         }
 
@@ -340,6 +350,16 @@ namespace CarReportSystem
         }
         private void carReportDataGridView_DataError(object sender, DataGridViewDataErrorEventArgs e)
         {
+
+        }
+
+        private void bindingNavigatorAddNewItem_Click(object sender, EventArgs e)
+        {
+            cbAuthor.Text = null;
+            cbCarName.Text = null;
+            rbOther.Checked = true;
+            tbReport.Text = null;
+            pbPicture.Image = null;
 
         }
     }
