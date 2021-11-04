@@ -94,32 +94,7 @@ namespace CarReportSystem
             }
             return CarReport.MakerGroup.その他;
 
-            /*
-            if (rbHonda.Checked )
-            {
-                return CarReport.MakerGroup.ホンダ;
-            }
-             if (rbNissan.Checked )
-            {
-                return CarReport.MakerGroup.日産;
-            }
-             if (rbSubaru.Checked )
-            {
-                return CarReport.MakerGroup.スバル;
-            }
-            if (rbToyota.Checked )
-            {
-                return CarReport.MakerGroup.トヨタ;
-            }
-            if (rbImport.Checked )
-            {
-                return CarReport.MakerGroup.外国車;
-            }
-            if (rbOther.Checked )
-            {
-                return CarReport.MakerGroup.その他;
-            }
-            */       
+           
         }
 
         //コンボボックスに記録者をせっとする
@@ -188,18 +163,11 @@ namespace CarReportSystem
 
         private void btDataDelete_Click(object sender, EventArgs e)
         {
-            //listcarReport.RemoveAt(dgvRegistData.CurrentRow.Index) ;
+          
         }
 
         private void btDataCorrect_Click(object sender, EventArgs e)
         {
-           //listcarReport[dgvRegistData.CurrentRow.Index].UpDate(
-           //                                 dtpDate.Value, cbAuthor.Text,
-           //                                 selectedGroup(), cbCarName.Text, 
-           //                                 tbReport.Text, pbPicture.Image);
-           
-            
-           // dgvRegistData.Refresh();    //コントロールの強制再描画
         }
 
         private void fmMain_Load(object sender, EventArgs e)
@@ -233,73 +201,14 @@ namespace CarReportSystem
             this.carReportBindingSource.EndEdit();
             this.tableAdapterManager.UpdateAll(this.infosys202121DataSet);
         
-#if false
 
-            if (sfdFileSave.ShowDialog() == DialogResult.OK)
-            {
-                //バイナリ形式でシリアル化
-                BinaryFormatter bf = new BinaryFormatter();
-
-                try
-                {
-                    using (FileStream fs = File.Open(sfdFileSave.FileName, FileMode.Create))
-                    {
-                        bf.Serialize(fs, listcarReport);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-                
-                
-           
-                
-            }
-#endif 
         }
 
         private void btConnect_Click(object sender, EventArgs e)
         {
             this.carReportTableAdapter.Fill(this.infosys202121DataSet.CarReport);
 
-#if false
 
-            if (ofdFileOpen.ShowDialog() == DialogResult.OK)
-            {
-                try { 
-                //バイナリ形式で逆シリアル化
-                var bf = new BinaryFormatter();
-
-                    using (FileStream fs = File.Open(ofdFileOpen.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        //逆シリアル化して読み込む
-                        listcarReport = (BindingList<CarReport>)bf.Deserialize(fs);
-                        dgvRegistData.DataSource = null;
-                        dgvRegistData.DataSource = listcarReport;
-
-
-                    }
-                }
-                catch(Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-
-                //よみこんだデータを各コンボボックスに登録する。
-
-                foreach (var item in listcarReport)
-                {
-                    setCbAuthor(item.Auther);
-                    setCbCarName(item.CarName);
-                }
-                
-                
-
-               
-            }
-#endif
         }
 
         private void carReportBindingNavigatorSaveItem_Click(object sender, EventArgs e)
@@ -316,20 +225,29 @@ namespace CarReportSystem
             if (carReportDataGridView.CurrentRow == null) return;
             try
             {
+                ssErrorLabel.Text = ""; 
+
                 dtpDate.Value = (DateTime)carReportDataGridView.CurrentRow.Cells[1].Value;    //日付
                 cbAuthor.Text = carReportDataGridView.CurrentRow.Cells[2].Value.ToString();   //記録者
-                                                                                              //メーカー（文字列 → 列挙型）
-                setNakerRadioButton(
-                    (CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup), carReportDataGridView.CurrentRow.Cells[3].Value.ToString()));
+                
+                setNakerRadioButton((CarReport.MakerGroup)Enum.Parse(typeof(CarReport.MakerGroup), carReportDataGridView.CurrentRow.Cells[3].Value.ToString()));
+                
                 cbCarName.Text = carReportDataGridView.CurrentRow.Cells[4].Value.ToString();  //車名
                 tbReport.Text = carReportDataGridView.CurrentRow.Cells[5].Value.ToString();   //レポート
+               
+                
                 pbPicture.Image = ByteArrayToImage((byte[])carReportDataGridView.CurrentRow.Cells[6].Value);     //画像
 
             }
-            catch (Exception)
+            catch (InvalidCastException)
             { 
                 pbPicture.Image = null;
 
+            }
+           catch(Exception ex)
+            {
+                //MessageBox.Show(ex.Message);
+                ssErrorLabel.Text = ex.Message;
             }
         }
 
@@ -337,8 +255,12 @@ namespace CarReportSystem
         // バイト配列をImageオブジェクトに変換
         public static Image ByteArrayToImage(byte[] b)
         {
-            ImageConverter imgconv = new ImageConverter();
-            Image img = (Image)imgconv.ConvertFrom(b);
+            Image img = null;
+            if (b.Length > 0)
+            {
+                ImageConverter imageconv = new ImageConverter();
+                img = (Image)imageconv.ConvertFrom(b);
+            }
             return img;
         }
         // Imageオブジェクトをバイト配列に変換
@@ -359,8 +281,11 @@ namespace CarReportSystem
             cbCarName.Text = null;
             rbOther.Checked = true;
             tbReport.Text = null;
+            dtpDate.Value = DateTime.Now;
+            
             pbPicture.Image = null;
 
         }
+
     }
 }
