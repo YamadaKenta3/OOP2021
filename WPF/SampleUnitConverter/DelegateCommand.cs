@@ -12,7 +12,8 @@ namespace SampleUnitConverter {
 
         //コンストラクタ（引数一つ）
         public DelegateCommand(Action execute)
-            : this(execute, () => true) { }
+            : this(execute, () => true) { 
+        }
 
         //コンストラクタ（引数二つ）
         public DelegateCommand(Action execute, Func<bool> canExecute) {

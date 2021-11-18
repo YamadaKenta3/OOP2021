@@ -12,7 +12,11 @@ namespace NamberGame
 
     }
 
-    public class BlockNumber { }
+    public class BlockNumber {
+    
+        
+
+    }
 
 
 }

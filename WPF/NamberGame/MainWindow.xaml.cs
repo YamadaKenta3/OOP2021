@@ -12,17 +12,50 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace NamberGame
 {
-    /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+   
+    /// <summary> の相互作用ロジック
     /// </summary>
+    /// MainWindow.xaml
     public partial class MainWindow : Window
     {
+        int num;
         public MainWindow()
         {
+            
             InitializeComponent();
+            Random ram= new Random();
+            num = ram.Next(1, 25);
+          
+        }
+
+       
+
+
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var button = (Button)sender;
+            var bnum = int.Parse(((Button)sender).Content.ToString());
+
+            if(bnum == num)
+            {
+                tbnum.Text = "正解";
+
+            }
+            else if (bnum > num)
+            {
+                tbnum.Text = "もっと小さい数字です。";
+            }
+            else
+            {
+                tbnum.Text = "もっと大きい数字です。";
+            }
+           
+
         }
     }
 }
