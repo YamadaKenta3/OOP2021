@@ -47,11 +47,21 @@ namespace SendMail
                 }
 
 
-              //  if (String.IsNullOrEmpty(tbBcc.Text, tbCc.Text))
-              //  {
-                    MessageBox.Show ("未入力");
-             //   }
-               
+
+                //件名（タイトル）
+                mailMessage.Subject = tbTitle.Text;
+                //本文
+                if (tbMessage.Text.Trim() == "")
+                {
+                    MessageBox.Show("本文が未入力です");
+                    btSend.Enabled = true;
+                    return;
+                }
+                else
+                {
+                    mailMessage.Body = tbMessage.Text;
+                }
+
 
 
                 //件名（タイトル）
@@ -78,8 +88,9 @@ namespace SendMail
                 smtpClient.SendCompleted += SmtpClient_SendCompleted;
                 string userState = "SendMail";
                 smtpClient.SendAsync(mailMessage, userState);
-                
 
+
+                
 
 
             }
@@ -87,7 +98,9 @@ namespace SendMail
             {
                
                 MessageBox.Show(ex.Message);
+
             }
+            
         }
 
         private void SmtpClient_SendCompleted(object sender, AsyncCompletedEventArgs e)
@@ -99,7 +112,20 @@ namespace SendMail
             else
             {
                 MessageBox.Show("送信完了");
+
+                Clear();
             }
+            btSend.Enabled = true;
+
+        }
+
+        private void Clear()
+        {
+            tbTo.Clear();
+            tbBcc.Clear();
+            tbCc.Clear();
+            tbMessage.Clear();
+            tbTitle.Clear();
 
         }
 

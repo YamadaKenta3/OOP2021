@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml;
 
 namespace SendMail
@@ -66,6 +67,7 @@ namespace SendMail
 
                 {
                     Set = false;
+                    MessageBox.Show(ex.Message);
                 }
                
               
