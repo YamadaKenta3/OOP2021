@@ -31,7 +31,7 @@ namespace Pelmanism
         {
             this.components = new System.ComponentModel.Container();
             this.labelGuidance = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.labelSec = new System.Windows.Forms.Label();
             this.buttonStart = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -47,15 +47,15 @@ namespace Pelmanism
             this.labelGuidance.TabIndex = 0;
             this.labelGuidance.Text = "label1";
             // 
-            // label2
+            // labelSec
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("MS UI Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 12);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "0秒経過";
+            this.labelSec.AutoSize = true;
+            this.labelSec.Font = new System.Drawing.Font("MS UI Gothic", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.labelSec.Location = new System.Drawing.Point(12, 9);
+            this.labelSec.Name = "labelSec";
+            this.labelSec.Size = new System.Drawing.Size(51, 12);
+            this.labelSec.TabIndex = 1;
+            this.labelSec.Text = "0秒経過";
             // 
             // buttonStart
             // 
@@ -67,13 +67,17 @@ namespace Pelmanism
             this.buttonStart.UseVisualStyleBackColor = true;
             this.buttonStart.Click += new System.EventHandler(this.button1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 311);
             this.Controls.Add(this.buttonStart);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.labelSec);
             this.Controls.Add(this.labelGuidance);
             this.Name = "FormGame";
             this.Tag = "475,350";
@@ -87,7 +91,7 @@ namespace Pelmanism
         #endregion
 
         private System.Windows.Forms.Label labelGuidance;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label labelSec;
         private System.Windows.Forms.Button buttonStart;
         private System.Windows.Forms.Timer timer1;
     }
