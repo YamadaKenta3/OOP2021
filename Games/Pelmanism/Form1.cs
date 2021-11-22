@@ -34,7 +34,7 @@ namespace Pelmanism
             //ImageConverter imgconv = new ImageConverter();
             //Image img = (Image)imgconv.ConvertFrom(b);
          
-
+            
 
             //カードのインスタンスの生成
             cards = new Card[picture.Length * 2];
@@ -206,11 +206,13 @@ namespace Pelmanism
             int n = playingCards.Length;
             while (n > 1)
             {
+                
                 n--;
                 int k = rng.Next(n + 1);
                 string tmp = playingCards[k].Picture;
                 playingCards[k].Picture = playingCards[n].Picture;
                 playingCards[n].Picture = tmp;
+           
             }
         }
 

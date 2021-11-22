@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -24,6 +25,13 @@ namespace SendMail
         public Form1()
         {
             InitializeComponent();
+            var filepass = @"./settings.xml";
+            if (!File.Exists(filepass))
+            {
+
+                configForm.ShowDialog();
+            }
+            
         }
 
         private void btSend_Click(object sender, EventArgs e)
@@ -63,11 +71,16 @@ namespace SendMail
                 }
 
 
+                if (btSend.Enabled == true)
+                {
+                    btSend.Enabled = false;
+                }
+
 
                 //件名（タイトル）
-                mailMessage.Subject = tbTitle.Text;
+               //mailMessage.Subject = tbTitle.Text;
                 //本文
-                mailMessage.Body = tbMessage.Text;
+               // mailMessage.Body = tbMessage.Text;
 
 
 
@@ -143,12 +156,38 @@ namespace SendMail
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //起動時に送信情報が未設定の場合設定画面を表示する
-            if (!Settings.Set)
+
+            try
             {
+
+
+
+                //起動時に送信情報が未設定の場合設定画面を表示する
+                if (File.Exists(@"./settings.xml"))
+                {
+                    using (var reader = XmlReader.Create(@"./settings.xml"))
+                    {
+                        var serializer = new DataContractSerializer(typeof(Settings));
+                        var readSetting = serializer.ReadObject(reader) as Settings;
+
+
+                        settings.Host = settings.Host;
+                        settings.Port = settings.Port;
+                        settings.Pass = settings.Pass;
+                        settings.MailAddr = settings.MailAddr;
+                        settings.Ssl = settings.Ssl;
+
+                    } 
+                } 
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("xmlが正しくありません");
                 configForm.ShowDialog();
             }
-               
+
+
         }
 
         private void 終了XToolStripMenuItem_Click(object sender, EventArgs e)
